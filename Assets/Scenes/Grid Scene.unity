@@ -328,8 +328,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPrefab: {fileID: 7531158513259803917, guid: a773b6b75e3428e468e6f1026fbc1449, type: 3}
+  nodePrefab: {fileID: 6821057641959273686, guid: 98541d9959ecb354eb75607bb830b870, type: 3}
   gridZ: 10
   gridX: 10
+  nodeRadius: 0
+  nodeDiameter: 0
   gridSpacingOffset: 1
   gridOrgin: {x: 0, y: 0, z: 0}
 --- !u!4 &1000447547
