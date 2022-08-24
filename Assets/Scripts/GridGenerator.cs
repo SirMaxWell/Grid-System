@@ -8,6 +8,7 @@ public class GridGenerator : MonoBehaviour
     public GameObject nodePrefab;
     public int gridZ; 
     public int gridX;
+    //private Node node;
 
     public float nodeRadius;
     public float nodeDiameter;
@@ -17,9 +18,11 @@ public class GridGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         
-        
+        //node.renderer.material.color = Color.red;
         CreateGrid();
+        
     }
 
 
@@ -33,17 +36,25 @@ public class GridGenerator : MonoBehaviour
                 // creates the position for each grid which is passed to spawnGrid function 
                 Vector3 spawnGridPosition = new Vector3(x * gridSpacingOffset,0, z * gridSpacingOffset) + gridOrgin;
                 Vector3 spawnNodePosition = new Vector3(x * gridSpacingOffset,1, z * gridSpacingOffset) + gridOrgin;
+                
                 spawnGrid(spawnGridPosition, Quaternion.identity);
                 spawnNode(spawnNodePosition, Quaternion.identity);
+
             }
         }
     }
     void spawnGrid(Vector3 positionToSpawn, Quaternion rotationToSpawn)
     {
         GameObject clone = Instantiate(gridPrefab, positionToSpawn, rotationToSpawn);
+        clone.transform.SetParent(gameObject.transform);
     }
     void spawnNode(Vector3 poitionToSpawn, Quaternion rotationToSpawn)
     {
         GameObject clone = Instantiate(nodePrefab, poitionToSpawn, rotationToSpawn);
+        clone.transform.SetParent(gameObject.transform);
     }
+
+    
+    
+    
 }
