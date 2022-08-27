@@ -6,11 +6,12 @@ public class GridGenerator : MonoBehaviour
 {
     public GameObject gridPrefab; // the object that will be used to create the grid // ex cube 
     public GameObject nodePrefab;
+    private GameObject[,] gridNodes;
     public int gridZ; 
     public int gridX;
     //private Node node;
 
-    public float nodeRadius;
+    public float nodeRadius = 1;
     public float nodeDiameter;
     public float gridSpacingOffset = 1f; // how separated the user wants the grid 
     public Vector3 gridOrgin = Vector3.zero; // uses a set orgin instead of the position of prefab // more flexible 
@@ -18,9 +19,9 @@ public class GridGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        gridNodes = new GameObject[gridX, gridZ];
         
-        //node.renderer.material.color = Color.red;
+        
         CreateGrid();
         
     }
@@ -37,8 +38,11 @@ public class GridGenerator : MonoBehaviour
                 Vector3 spawnGridPosition = new Vector3(x * gridSpacingOffset,0, z * gridSpacingOffset) + gridOrgin;
                 Vector3 spawnNodePosition = new Vector3(x * gridSpacingOffset,1, z * gridSpacingOffset) + gridOrgin;
                 
+
                 spawnGrid(spawnGridPosition, Quaternion.identity);
                 spawnNode(spawnNodePosition, Quaternion.identity);
+
+
 
             }
         }
@@ -47,14 +51,24 @@ public class GridGenerator : MonoBehaviour
     {
         GameObject clone = Instantiate(gridPrefab, positionToSpawn, rotationToSpawn);
         clone.transform.SetParent(gameObject.transform);
+        clone.gameObject.name = "Grid Space ( X: " + positionToSpawn.x.ToString() + " , Z: " + positionToSpawn.z.ToString() + ")";
+        
+        
     }
-    void spawnNode(Vector3 poitionToSpawn, Quaternion rotationToSpawn)
+    void spawnNode(Vector3 positionToSpawn, Quaternion rotationToSpawn)
     {
-        GameObject clone = Instantiate(nodePrefab, poitionToSpawn, rotationToSpawn);
+        GameObject clone = Instantiate(nodePrefab, positionToSpawn, rotationToSpawn);
         clone.transform.SetParent(gameObject.transform);
+        clone.gameObject.name = "Node Space ( X: " + positionToSpawn.x.ToString() + " , Z: " + positionToSpawn.z.ToString() + ")";
+        clone.GetComponent<Node>().worldPosition.x = positionToSpawn.x;
+        clone.GetComponent<Node>().worldPosition.z = positionToSpawn.z;
+        
     }
 
-    
-    
-    
+    private void OnCollisionEnter(Collision other)
+    {
+        
+    }
+
+
 }

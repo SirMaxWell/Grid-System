@@ -7,18 +7,20 @@ public class Node : MonoBehaviour
 
     public bool walkable;
     public Vector3 worldPosition;
-    [HideInInspector]
-    public Renderer renderer;
+    public LayerMask layerMask;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        renderer = GetComponent<Renderer>();
-    }
+    public int posX;
+    public int posZ;
 
-    // Update is called once per frame
-    void Update()
+    
+    /*
+    public void SetPosition(int x, int Z)
     {
-        
+        posX = x;
+        posZ = Z;
     }
+    */
+    
+    
+    
 }

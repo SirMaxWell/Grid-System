@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3234892194832963145}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: NodeTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,3 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c014f71dbe776a64188e60aec3d567f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkable: 0
+  worldPosition: {x: 0, y: 0, z: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  posX: 0
+  posZ: 0
