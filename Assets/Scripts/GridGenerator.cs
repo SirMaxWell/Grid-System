@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridGenerator : MonoBehaviour
 {
     public GameObject gridPrefab; // the object that will be used to create the grid // ex cube 
-    public GameObject nodePrefab;
+    //public GameObject nodePrefab;
     private GameObject[,] gridNodes;
     public int gridZ; 
     public int gridX;
@@ -20,9 +20,10 @@ public class GridGenerator : MonoBehaviour
     void Start()
     {
         gridNodes = new GameObject[gridX, gridZ];
-        
+
         
         CreateGrid();
+        //new Node(10, 10, 2f);
         
     }
 
@@ -38,10 +39,10 @@ public class GridGenerator : MonoBehaviour
                 Vector3 spawnGridPosition = new Vector3(x * gridSpacingOffset,0, z * gridSpacingOffset) + gridOrgin;
                 Vector3 spawnNodePosition = new Vector3(x * gridSpacingOffset,1, z * gridSpacingOffset) + gridOrgin;
                 
-
+                
                 spawnGrid(spawnGridPosition, Quaternion.identity);
-                spawnNode(spawnNodePosition, Quaternion.identity);
-
+                //spawnNode(spawnNodePosition, Quaternion.identity);
+                
 
 
             }
@@ -55,20 +56,40 @@ public class GridGenerator : MonoBehaviour
         
         
     }
+
+    /*
     void spawnNode(Vector3 positionToSpawn, Quaternion rotationToSpawn)
     {
-        GameObject clone = Instantiate(nodePrefab, positionToSpawn, rotationToSpawn);
-        clone.transform.SetParent(gameObject.transform);
-        clone.gameObject.name = "Node Space ( X: " + positionToSpawn.x.ToString() + " , Z: " + positionToSpawn.z.ToString() + ")";
-        clone.GetComponent<Node>().worldPosition.x = positionToSpawn.x;
-        clone.GetComponent<Node>().worldPosition.z = positionToSpawn.z;
+        GameObject obj = Instantiate(nodePrefab, positionToSpawn, rotationToSpawn);
+        obj.transform.SetParent(gameObject.transform);
+        obj.gameObject.name = "Node Space ( X: " + positionToSpawn.x.ToString() + " , Z: " + positionToSpawn.z.ToString() + ")";
+        obj.GetComponent<Node>().worldPosition.x = positionToSpawn.x;
+        obj.GetComponent<Node>().worldPosition.z = positionToSpawn.z;
+        gridNodes[(int)positionToSpawn.x,(int)positionToSpawn.z] = obj;
+
+        //if(obj)
+        /*
+        foreach(GameObject thing in gridNodes)
+        {
+            thing.GetComponent<Node>().walkable = true;
+        }
+        */
         
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        
-    }
+    
+    
+    
+    
+
+    
+    
+    
+
+    
+    
+    
+    
 
 
-}
+

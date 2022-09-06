@@ -2,25 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : MonoBehaviour
+public class Node 
 {
-
-    public bool walkable;
-    public Vector3 worldPosition;
-    public LayerMask layerMask;
-
-    public int posX;
-    public int posZ;
+    
+  
 
     
-    /*
-    public void SetPosition(int x, int Z)
-    {
-        posX = x;
-        posZ = Z;
-    }
-    */
-    
-    
-    
+
 }
